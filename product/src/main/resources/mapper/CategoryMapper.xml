@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.novli.product.mapper.CategoryMapper">
+    
+    <resultMap type="com.novli.product.entity.Category" id="CategoryResult">
+        <result property="categoryId"    column="category_id"    />
+        <result property="categoryName"    column="category_name"    />
+        <result property="categoryType"    column="category_type"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+	
+	<sql id="selectCategoryVo">
+        select category_id, category_name, category_type, create_time, update_time from product_category
+    </sql>
+	
+    <select id="selectCategoryList" parameterType="com.novli.product.entity.Category" resultMap="CategoryResult">
+        <include refid="selectCategoryVo"/>
+        <where>  
+            <if test="categoryId != null and categoryId != ''"> and category_id = #{categoryId}</if>
+             <if test="categoryName != null and categoryName != ''"> and category_name = #{categoryName}</if>
+             <if test="categoryType != null and categoryType != ''"> and category_type = #{categoryType}</if>
+             <if test="createTime != null and createTime != ''"> and create_time = #{createTime}</if>
+             <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime}</if>
+         </where>
+    </select>
+    
+    <select id="selectCategoryById" parameterType="Integer" resultMap="CategoryResult">
+        <include refid="selectCategoryVo"/>
+        where category_id = #{categoryId}
+    </select>
+        
+    <insert id="insertCategory" parameterType="com.novli.product.entity.Category">
+        insert into product_category
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="categoryId != null and categoryId != '' ">category_id,</if>
+			<if test="categoryName != null and categoryName != '' ">category_name,</if>
+			<if test="categoryType != null and categoryType != '' ">category_type,</if>
+			<if test="createTime != null and createTime != '' ">create_time,</if>
+			<if test="updateTime != null and updateTime != '' ">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="categoryId != null and categoryId != ''">#{categoryId},</if>
+			<if test="categoryName != null and categoryName != ''">#{categoryName},</if>
+			<if test="categoryType != null and categoryType != ''">#{categoryType},</if>
+			<if test="createTime != null and createTime != ''">#{createTime},</if>
+			<if test="updateTime != null and updateTime != ''">#{updateTime},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateCategory" parameterType="com.novli.product.entity.Category">
+        update product_category
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="categoryName != null  and categoryName != ''  ">category_name = #{categoryName},</if>
+            <if test="categoryType != null  ">category_type = #{categoryType},</if>
+            <if test="createTime != null  ">create_time = #{createTime},</if>
+            <if test="updateTime != null  ">update_time = #{updateTime},</if>
+        </trim>
+        where category_id = #{categoryId}
+    </update>
+
+	<delete id="deleteCategoryById" parameterType="Integer">
+        delete from product_category where category_id = #{categoryId}
+    </delete>
+	
+    <delete id="deleteCategoryByIds" parameterType="String">
+        delete from product_category where category_id in 
+        <foreach item="categoryId" collection="array" open="(" separator="," close=")">
+            #{categoryId}
+        </foreach>
+    </delete>
+    
+</mapper>

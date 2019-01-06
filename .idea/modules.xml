@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/product/product.iml" filepath="$PROJECT_DIR$/product/product.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sell-server/sell-server.iml" filepath="$PROJECT_DIR$/sell-server/sell-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-sell.iml" filepath="$PROJECT_DIR$/springcloud-sell.iml" />
+    </modules>
+  </component>
+</project>
