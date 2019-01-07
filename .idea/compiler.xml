@@ -14,6 +14,7 @@
     <bytecodeTargetLevel target="8">
       <module name="product" target="1.8" />
       <module name="sell-server" target="1.8" />
+      <module name="springcloud-sell" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

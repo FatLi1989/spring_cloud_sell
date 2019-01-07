@@ -24,6 +24,13 @@ public class ProductController {
 
     @GetMapping("/list")
     public List<Info> selectProduct() {
+
+        /**
+         *  1.查询所有在架的商品
+         *  2.获取类目type列表
+         *  3.查询类目
+         *  4.构造数据
+         */
         List<Info> infoList = iInfoService.selectInfoList(new Info());
         return infoList;
     }
