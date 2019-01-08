@@ -1,6 +1,8 @@
 package com.novli.product.service.impl;
 
+import com.novli.product.Vo.CategoryVo;
 import com.novli.product.entity.Category;
+import com.novli.product.enums.ProductStatusEnum;
 import com.novli.product.mapper.CategoryMapper;
 import com.novli.product.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,5 +81,14 @@ public class CategoryServiceImpl implements ICategoryService
 	{
 		return categoryMapper.deleteCategoryByIds(ids.split(","));
 	}
-	
+
+	@Override
+	public List<CategoryVo> listProductsByCategory () {
+
+		List<CategoryVo> categoryVoList = categoryMapper
+				.listProductsByCategory(ProductStatusEnum.up.getCode ());
+		return categoryVoList;
+	}
+
+
 }

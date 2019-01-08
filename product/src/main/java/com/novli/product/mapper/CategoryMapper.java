@@ -1,7 +1,9 @@
 package com.novli.product.mapper;
 
+import com.novli.product.Vo.CategoryVo;
 import com.novli.product.entity.Category;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;	
@@ -63,5 +65,6 @@ public interface CategoryMapper
      * @return 结果
      */
 	public int deleteCategoryByIds(String[] categoryIds);
-	
+
+	List<CategoryVo> listProductsByCategory (@Param ("status") Integer status);
 }

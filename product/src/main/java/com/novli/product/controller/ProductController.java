@@ -1,8 +1,12 @@
 package com.novli.product.controller;
 
 
+import com.novli.product.Vo.CategoryVo;
+import com.novli.product.Vo.ResultVo;
 import com.novli.product.entity.Info;
+import com.novli.product.service.ICategoryService;
 import com.novli.product.service.IInfoService;
+import com.novli.product.util.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,23 +19,24 @@ import java.util.List;
 @Slf4j
 @ResponseBody
 @RestController
-@RequestMapping("/product")
+@RequestMapping ("/product")
 public class ProductController {
 
 
-    @Autowired
-    IInfoService iInfoService;
+	@Autowired
+	private ICategoryService iCategoryService;
 
-    @GetMapping("/list")
-    public List<Info> selectProduct() {
+	@GetMapping ("/list")
+	public ResultVo selectProduct () {
 
-        /**
-         *  1.查询所有在架的商品
-         *  2.获取类目type列表
-         *  3.查询类目
-         *  4.构造数据
-         */
-        List<Info> infoList = iInfoService.selectInfoList(new Info());
-        return infoList;
-    }
+		/**
+		 *  1.查询所有在架的商品
+		 *  2.获取类目type列表
+		 *  3.查询类目
+		 *  4.构造数据
+		 */
+		List<CategoryVo> categoryVoList = iCategoryService.listProductsByCategory();
+
+		return ResultUtil.success (categoryVoList);
+	}
 }
