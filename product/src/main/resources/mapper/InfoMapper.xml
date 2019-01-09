@@ -54,7 +54,7 @@
     </select>
 
     <select id="listProductByCatogoryType" parameterType="java.util.Map"
-            resultType="com.novli.product.Vo.ProductInfoVo">
+            resultType="com.novli.product.vo.ProductInfoVo">
         SELECT
             product_id          as productId,
             product_name        as productName,

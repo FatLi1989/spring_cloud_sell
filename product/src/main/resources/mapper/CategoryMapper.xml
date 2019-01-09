@@ -13,7 +13,7 @@
     <resultMap type="com.novli.product.Vo.CategoryVo" id="categoryProductResult">
         <result property="categoryName" column="category_name"/>
         <result property="categoryType" column="category_type"/>
-        <collection property="productInfoVoList" ofType="com.novli.product.Vo.ProductInfoVo"
+        <collection property="productInfoVoList" ofType="com.novli.product.vo.ProductInfoVo"
                     select="com.novli.product.mapper.InfoMapper.listProductByCatogoryType"
                     column="{categoryType=category_type,status=status}"/>
     </resultMap>

@@ -1,6 +1,6 @@
 package com.novli.product.mapper;
 
-import com.novli.product.Vo.CategoryVo;
+import com.novli.product.vo.CategoryVo;
 import com.novli.product.entity.Category;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

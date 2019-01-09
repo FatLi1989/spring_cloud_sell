@@ -1,11 +1,9 @@
 package com.novli.product.controller;
 
 
-import com.novli.product.Vo.CategoryVo;
-import com.novli.product.Vo.ResultVo;
-import com.novli.product.entity.Info;
+import com.novli.product.vo.CategoryVo;
+import com.novli.product.vo.ResultVo;
 import com.novli.product.service.ICategoryService;
-import com.novli.product.service.IInfoService;
 import com.novli.product.util.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

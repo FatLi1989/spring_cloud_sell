@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.novli.order.mapper.DetailMapper">
+
+    <resultMap type="com.novli.order.entity.Detail" id="DetailResult">
+        <result property="detailId" column="detail_id"/>
+        <result property="orderId" column="order_id"/>
+        <result property="productId" column="product_id"/>
+        <result property="productName" column="product_name"/>
+        <result property="productPrice" column="product_price"/>
+        <result property="productQuantity" column="product_quantity"/>
+        <result property="productIcon" column="product_icon"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="selectDetailVo">
+        select
+            detail_id,
+            order_id,
+            product_id,
+            product_name,
+            product_price,
+            product_quantity,
+            product_icon,
+            create_time,
+            update_time
+        from order_detail
+    </sql>
+
+    <select id="selectDetailList" parameterType="com.novli.order.entity.Detail" resultMap="DetailResult">
+        <include refid="selectDetailVo"/>
+        <where>
+            <if test="detailId != null  and detailId != '' ">and detail_id = #{detailId}</if>
+            <if test="orderId != null  and orderId != '' ">and order_id = #{orderId}</if>
+            <if test="productId != null  and productId != '' ">and product_id = #{productId}</if>
+            <if test="productName != null  and productName != '' ">and product_name = #{productName}</if>
+            <if test="productPrice != null ">and product_price = #{productPrice}</if>
+            <if test="productQuantity != null ">and product_quantity = #{productQuantity}</if>
+            <if test="productIcon != null  and productIcon != '' ">and product_icon = #{productIcon}</if>
+            <if test="createTime != null ">and create_time = #{createTime}</if>
+            <if test="updateTime != null ">and update_time = #{updateTime}</if>
+        </where>
+    </select>
+
+    <select id="selectDetailById" parameterType="String" resultMap="DetailResult">
+        <include refid="selectDetailVo"/>
+        where detail_id = #{detailId}
+    </select>
+
+    <insert id="insertDetail" parameterType="com.novli.order.entity.Detail">
+        insert into order_detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="detailId != null  and detailId != ''  ">detail_id,</if>
+            <if test="orderId != null  and orderId != ''  ">order_id,</if>
+            <if test="productId != null  and productId != ''  ">product_id,</if>
+            <if test="productName != null  and productName != ''  ">product_name,</if>
+            <if test="productPrice != null  ">product_price,</if>
+            <if test="productQuantity != null  ">product_quantity,</if>
+            <if test="productIcon != null  and productIcon != ''  ">product_icon,</if>
+            <if test="createTime != null  ">create_time,</if>
+            <if test="updateTime != null  ">update_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="detailId != null  and detailId != ''  ">#{detailId},</if>
+            <if test="orderId != null  and orderId != ''  ">#{orderId},</if>
+            <if test="productId != null  and productId != ''  ">#{productId},</if>
+            <if test="productName != null  and productName != ''  ">#{productName},</if>
+            <if test="productPrice != null  ">#{productPrice},</if>
+            <if test="productQuantity != null  ">#{productQuantity},</if>
+            <if test="productIcon != null  and productIcon != ''  ">#{productIcon},</if>
+            <if test="createTime != null  ">#{createTime},</if>
+            <if test="updateTime != null  ">#{updateTime},</if>
+        </trim>
+    </insert>
+
+    <update id="updateDetail" parameterType="com.novli.order.entity.Detail">
+        update order_detail
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="orderId != null  and orderId != ''  ">order_id = #{orderId},</if>
+            <if test="productId != null  and productId != ''  ">product_id = #{productId},</if>
+            <if test="productName != null  and productName != ''  ">product_name = #{productName},</if>
+            <if test="productPrice != null  ">product_price = #{productPrice},</if>
+            <if test="productQuantity != null  ">product_quantity = #{productQuantity},</if>
+            <if test="productIcon != null  and productIcon != ''  ">product_icon = #{productIcon},</if>
+            <if test="createTime != null  ">create_time = #{createTime},</if>
+            <if test="updateTime != null  ">update_time = #{updateTime},</if>
+        </trim>
+        where detail_id = #{detailId}
+    </update>
+
+    <delete id="deleteDetailById" parameterType="String">
+        delete from order_detail
+        where detail_id = #{detailId}
+    </delete>
+
+    <delete id="deleteDetailByIds" parameterType="String">
+        delete from order_detail where detail_id in
+        <foreach item="detailId" collection="array" open="(" separator="," close=")">
+            #{detailId}
+        </foreach>
+    </delete>
+
+</mapper>

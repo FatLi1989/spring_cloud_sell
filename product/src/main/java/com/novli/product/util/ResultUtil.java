@@ -1,6 +1,6 @@
 package com.novli.product.util;
 
-import com.novli.product.Vo.ResultVo;
+import com.novli.product.vo.ResultVo;
 
 /**
  * @author NovLi

@@ -1,6 +1,6 @@
 package com.novli.product.mapper;
 
-import com.novli.product.Vo.ProductInfoVo;
+import com.novli.product.vo.ProductInfoVo;
 import com.novli.product.entity.Info;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

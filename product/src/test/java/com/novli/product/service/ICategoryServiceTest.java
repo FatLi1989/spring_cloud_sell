@@ -1,15 +1,13 @@
 package com.novli.product.service;
 
 import com.novli.product.ProductApplicationTests;
-import com.novli.product.Vo.CategoryVo;
+import com.novli.product.vo.CategoryVo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * @author NovLi

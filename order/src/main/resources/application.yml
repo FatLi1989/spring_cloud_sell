@@ -3,7 +3,7 @@ eureka:
     service-url:
         defaultZone : http://localhost:8671/eureka/
   instance:
-    hostname: product
+    hostname: order
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -11,14 +11,14 @@ spring:
     username: root
     password: root
   application:
-    name:  product
+     name: order
 mybatis:
     #实体类所做包
-    type-aliases-package: com.novli.product.entity
+    type-aliases-package: com.novli.order.entity
     #mapper.xml所在位置
     mapper-locations: classpath:mapper/*.xml
 logging:
   level:
-    com.novli.product.mapper : DEBUG
+    com.novli.order.mapper : DEBUG
 server:
-  port: 8673
+  port: 8672

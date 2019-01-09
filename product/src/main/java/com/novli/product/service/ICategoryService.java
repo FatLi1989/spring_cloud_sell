@@ -1,6 +1,6 @@
 package com.novli.product.service;
 
-import com.novli.product.Vo.CategoryVo;
+import com.novli.product.vo.CategoryVo;
 import com.novli.product.entity.Category;
 
 import java.util.List;

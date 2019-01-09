@@ -1,6 +1,6 @@
 package com.novli.product.service.impl;
 
-import com.novli.product.Vo.CategoryVo;
+import com.novli.product.vo.CategoryVo;
 import com.novli.product.entity.Category;
 import com.novli.product.enums.ProductStatusEnum;
 import com.novli.product.mapper.CategoryMapper;
