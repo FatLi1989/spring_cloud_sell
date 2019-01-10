@@ -1,9 +1,10 @@
 eureka:
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.cloud.discovery.client.simple.local.uri}:${server.port}
   client:
     service-url:
         defaultZone : http://localhost:8671/eureka/
-  instance:
-    hostname: product
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -12,6 +13,12 @@ spring:
     password: root
   application:
     name:  product
+  cloud:
+      discovery:
+        client:
+          simple:
+            local:
+              uri: 192.0.0.1
 mybatis:
     #实体类所做包
     type-aliases-package: com.novli.product.entity

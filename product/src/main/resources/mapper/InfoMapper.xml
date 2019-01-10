@@ -67,6 +67,15 @@
             category_type = #{categoryType} and product_status = #{status}
     </select>
 
+    <select id="listProductsIn" resultMap="InfoResult">
+        select *
+        from product_info
+        where product_id in
+        <foreach collection="ids" item="id" index="index" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
     <insert id="insertInfo" parameterType="com.novli.product.entity.Info">
         insert into product_info
         <trim prefix="(" suffix=")" suffixOverrides=",">

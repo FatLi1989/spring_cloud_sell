@@ -1,10 +1,19 @@
 package com.novli.order.service.impl;
 
+import com.novli.order.Client.ProductClient;
+import com.novli.order.dto.OrderDto;
 import com.novli.order.entity.Master;
+import com.novli.order.enums.OrderStatusEnum;
+import com.novli.order.enums.PayStatusEnums;
 import com.novli.order.mapper.MasterMapper;
 import com.novli.order.service.IMasterService;
+import com.novli.order.util.KeyUtil;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,6 +27,8 @@ public class MasterServiceImpl implements IMasterService
 {
 	@Autowired
 	private MasterMapper masterMapper;
+	@Autowired
+	private ProductClient productClient;
 
 	/**
      * 查询信息
@@ -78,5 +89,25 @@ public class MasterServiceImpl implements IMasterService
 	{
 		return masterMapper.deleteMasterByIds(ids.split(","));
 	}
-	
+
+	@Override
+	public OrderDto create (OrderDto orderDto) {
+		 String orderId = KeyUtil.genUniqueKey ();
+		//查询商品信息(调用商品服务)
+		//TODO
+		//计算总价
+		//TODO
+		//扣库存(调用商品服务)
+		//TODO
+		//订单入库
+		Master master = new Master();
+		orderDto.setOrderId (orderId);
+		BeanUtils.copyProperties (orderDto, master);
+		master.setOrderAmount (new BigDecimal (5));
+		master.setOrderStatus (OrderStatusEnum.NEW.getCode ());
+		master.setPayStatus (PayStatusEnums.WAIT.getCode ());
+		masterMapper.insertMaster (master);
+		return orderDto;
+	}
+
 }

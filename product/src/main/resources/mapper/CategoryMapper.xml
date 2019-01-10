@@ -10,7 +10,7 @@
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
-    <resultMap type="com.novli.product.Vo.CategoryVo" id="categoryProductResult">
+    <resultMap type="com.novli.product.vo.CategoryVo" id="categoryProductResult">
         <result property="categoryName" column="category_name"/>
         <result property="categoryType" column="category_type"/>
         <collection property="productInfoVoList" ofType="com.novli.product.vo.ProductInfoVo"

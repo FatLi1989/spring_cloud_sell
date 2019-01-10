@@ -66,4 +66,6 @@ public interface InfoMapper {
 	int deleteInfoByIds (String[] productIds);
 
 	List<ProductInfoVo> listProductByCatogoryType (@Param ("categoryType") String categoryType);
+
+	List<Info> listProductsIn (@Param ("ids") List<String> productIds);
 }

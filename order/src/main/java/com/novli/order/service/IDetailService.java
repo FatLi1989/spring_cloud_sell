@@ -1,6 +1,6 @@
 package com.novli.order.service;
 
-import com.ruoyi.system.domain.Detail;
+import com.novli.order.entity.Detail;
 import java.util.List;
 
 /**

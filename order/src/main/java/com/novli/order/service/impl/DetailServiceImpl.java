@@ -1,12 +1,13 @@
 package com.novli.order.service.impl;
 
 import java.util.List;
+
+import com.novli.order.entity.Detail;
+import com.novli.order.mapper.DetailMapper;
+import com.novli.order.service.IDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ruoyi.system.mapper.DetailMapper;
-import com.ruoyi.system.domain.Detail;
-import com.ruoyi.system.service.IDetailService;
-import com.ruoyi.common.support.Convert;
+
 
 /**
  *  服务层实现
@@ -15,7 +16,7 @@ import com.ruoyi.common.support.Convert;
  * @date 2019-01-09
  */
 @Service
-public class DetailServiceImpl implements IDetailService 
+public class DetailServiceImpl implements IDetailService
 {
 	@Autowired
 	private DetailMapper detailMapper;
@@ -77,7 +78,7 @@ public class DetailServiceImpl implements IDetailService
 	@Override
 	public int deleteDetailByIds(String ids)
 	{
-		return detailMapper.deleteDetailByIds(Convert.toStrArray(ids));
+		return detailMapper.deleteDetailByIds(ids.split (","));
 	}
 	
 }

@@ -13,8 +13,6 @@ import java.util.Date;
 @Data
 public class Master
 {
-	private static final long serialVersionUID = 1L;
-	
 	/**  */
 	private String orderId;
 	/** 买家名字 */

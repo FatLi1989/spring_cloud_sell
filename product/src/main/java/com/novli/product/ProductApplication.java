@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@ComponentScan(basePackages = {"com.novli.product.*"})
+@ComponentScan(basePackages = {"com.novli.product.*", "com.novli.product.config"})
 @MapperScan("com.novli.product.mapper")
 public class ProductApplication {
 

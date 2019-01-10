@@ -1,16 +1,15 @@
 package com.novli.product.controller;
 
 
+import com.novli.product.entity.Info;
+import com.novli.product.service.IInfoService;
 import com.novli.product.vo.CategoryVo;
 import com.novli.product.vo.ResultVo;
 import com.novli.product.service.ICategoryService;
 import com.novli.product.util.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +22,8 @@ public class ProductController {
 
 	@Autowired
 	private ICategoryService iCategoryService;
+	@Autowired
+	private IInfoService iInfoService;
 
 	@GetMapping ("/list")
 	public ResultVo selectProduct () {
@@ -36,5 +37,16 @@ public class ProductController {
 		List<CategoryVo> categoryVoList = iCategoryService.listProductsByCategory();
 
 		return ResultUtil.success (categoryVoList);
+	}
+
+	/**
+	 * 获取订单对应商品信息(给订单服务用)
+	 * @param productIds
+	 * @return
+	 */
+	@PostMapping("/listForOrder")
+	public List<Info> listProductsInProductId(@RequestBody List<String> productIds) {
+		List<Info> infoList = iInfoService.listProductsIn(productIds);
+		return infoList;
 	}
 }

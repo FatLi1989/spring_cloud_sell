@@ -51,5 +51,6 @@ public interface IInfoService
      * @return 结果
      */
 	public int deleteInfoByIds(String ids);
-	
+
+	List<Info> listProductsIn (List<String> productIds);
 }

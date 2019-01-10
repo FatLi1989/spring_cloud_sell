@@ -1,6 +1,8 @@
 package com.novli.order.mapper;
 
 import com.novli.order.entity.Master;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -10,6 +12,8 @@ import java.util.List;
  * @author ruoyi
  * @date 2019-01-09
  */
+@Mapper
+@Component
 public interface MasterMapper {
     /**
      * 查询信息
