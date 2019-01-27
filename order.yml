@@ -1,0 +1,24 @@
+eureka:
+  client:
+    service-url:
+        defaultZone : http://localhost:8671/eureka/
+  instance:
+    hostname: order
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.95.0.193:3306/spring_cloud_sell?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+  application:
+     name: order
+mybatis:
+    #实体类所做包
+    type-aliases-package: com.novli.order.entity
+    #mapper.xml所在位置
+    mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+    com.novli.order.mapper : DEBUG
+server:
+  port: 8672
