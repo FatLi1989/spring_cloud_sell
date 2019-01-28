@@ -1,6 +1,7 @@
 package com.novli.product.controller;
 
 
+import com.novli.product.dto.ProductStockDto;
 import com.novli.product.entity.Info;
 import com.novli.product.service.IInfoService;
 import com.novli.product.vo.CategoryVo;
@@ -48,5 +49,14 @@ public class ProductController {
 	public List<Info> listProductsInProductId(@RequestBody List<String> productIds) {
 		List<Info> infoList = iInfoService.listProductsIn(productIds);
 		return infoList;
+	}
+
+	/**
+	 * 扣库存
+	 */
+	@PostMapping("/decreaseStock")
+	public List<Info> decreaseStock (@RequestBody List<ProductStockDto> productStockDtoList) {
+		List<Info> infoList = iInfoService.decreaseStock(productStockDtoList);
+		return	infoList;
 	}
 }

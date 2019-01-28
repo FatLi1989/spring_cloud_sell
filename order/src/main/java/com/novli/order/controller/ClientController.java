@@ -1,6 +1,7 @@
 package com.novli.order.controller;
 
 import com.novli.order.Client.ProductClient;
+import com.novli.order.dto.ProductStockDto;
 import com.novli.order.entity.Info;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,9 +52,11 @@ public class ClientController {
 		log.info ("result = {}", result);*/
 		/*String result = productClient.productMsg ();
 		log.info ("【result】={}", result);*/
-
+		ProductStockDto productStockDto = new ProductStockDto ();
+		productStockDto.setProductId ("157875196366160022");
+		productStockDto.setProductStock (1);
 		List<Info> infoList = productClient
-				.listProductsInProductId (Arrays.asList ("157875196366160022", "157875227953464068"));
+				.decreaseStock (Arrays.asList (productStockDto));
 		log.info ("infoList = {}", infoList);
 		return "1";
 	}

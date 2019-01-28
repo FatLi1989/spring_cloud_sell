@@ -1,12 +1,18 @@
 package com.novli.product.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.novli.product.dto.ProductStockDto;
+import com.novli.product.enums.ResultEnum;
+import com.novli.product.exception.ProductException;
 import com.novli.product.mapper.InfoMapper;
 import com.novli.product.entity.Info;
 import com.novli.product.service.IInfoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -15,6 +21,7 @@ import org.springframework.stereotype.Service;
  * @author ruoyi
  * @date 2019-01-06
  */
+@Slf4j
 @Service
 public class InfoServiceImpl implements IInfoService {
 	@Autowired
@@ -79,6 +86,39 @@ public class InfoServiceImpl implements IInfoService {
 	public List<Info> listProductsIn (List<String> productIds) {
 		List<Info> infoList = infoMapper.listProductsIn (productIds);
 		return infoList;
+	}
+
+	/**
+	 * 商品扣库存
+	 *
+	 * @param productStockDtoList
+	 * @return
+	 */
+	@Override
+	@Transactional
+	public List<Info> decreaseStock (List<ProductStockDto> productStockDtoList) {
+		List<Info> productStockDtoArrayList = new ArrayList<> ();
+
+		//查询库存
+		for (ProductStockDto productStockDto : productStockDtoList) {
+			Info info = infoMapper.selectInfoById (productStockDto.getProductId ());
+			//判断库存是否足够
+			if (info == null) {
+				log.error ("【商品扣库存】时商品信息不存在");
+				throw new ProductException (ResultEnum.PRODUCT_NOT_EXIST);
+			}
+
+			if (info.getProductStock () - productStockDto.getProductStock () < 0) {
+				log.error ("【商品扣库存】时库存不足 ProductStock = {}", info.getProductStock ());
+				throw new ProductException (ResultEnum.STOCK_NOT_ENOUGH);
+			}
+			//修改库存
+			info.setProductStock (info.getProductStock () - productStockDto.getProductStock ());
+			infoMapper.updateInfo (info);
+			productStockDtoArrayList.add (info);
+
+		}
+		return productStockDtoArrayList;
 	}
 
 }

@@ -1,6 +1,8 @@
 package com.novli.product.service;
 
+import com.novli.product.ProductApplication;
 import com.novli.product.ProductApplicationTests;
+import com.novli.product.dto.ProductStockDto;
 import com.novli.product.entity.Info;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
@@ -29,5 +31,17 @@ public class IInfoServiceTest extends ProductApplicationTests {
 		List<Info> infoList = iInfoService.listProductsIn (Arrays.asList ("157875196366160022", "157875227953464068"));
 		log.info ("infoList={}", infoList.toString ());
 		Assert.assertTrue (infoList.size () > 0);
+	}
+
+	@Test
+	public void decreaseStock () {
+		ProductStockDto productStockDto = new ProductStockDto ();
+		productStockDto.setProductId ("157875227953464068");
+		productStockDto.setProductStock (10);
+		ProductStockDto productStockDto1 = new ProductStockDto ();
+		productStockDto1.setProductId ("164103465734242707");
+		productStockDto1.setProductStock (15);
+		List<Info> infoList = iInfoService.decreaseStock (Arrays.asList (productStockDto, productStockDto1));
+		Assert.assertTrue (infoList.size ()>0);
 	}
 }

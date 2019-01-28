@@ -32,17 +32,17 @@ public class OrderVoConvertToOrderDto {
 		orderDto.setBuyerPhone (orderForm.getPhone ());
 		orderDto.setBuyerOpenid (orderForm.getOpenId ());
 
-		List<Detail> masterList = new ArrayList<> ();
+		List<Detail> detailList = new ArrayList<> ();
 
 		try {
-			masterList = gson.fromJson (orderForm.getItems (),
-					new TypeToken<List<Master>> () {
+			detailList = gson.fromJson (orderForm.getItems (),
+					new TypeToken<List<Detail>> () {
 			}.getType ());
 		} catch (JsonSyntaxException e) {
 			log.error ("【json转换】错误, String = {}", orderForm.getItems ());
 			throw new OrderException (ResultEnum.PARAM_ERROR);
 		}
-		orderDto.setDetailList (masterList);
+		orderDto.setDetailList (detailList);
 
 		return orderDto;
 	}

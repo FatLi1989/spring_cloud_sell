@@ -12,4 +12,10 @@
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
+    <modules>
+        <module>order</module>
+        <module>product</module>
+        <module>sell-server</module>
+    </modules>
 </project>

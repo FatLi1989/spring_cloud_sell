@@ -1,5 +1,6 @@
 package com.novli.product.service;
 
+import com.novli.product.dto.ProductStockDto;
 import com.novli.product.entity.Info;
 
 import java.util.List;
@@ -53,4 +54,6 @@ public interface IInfoService
 	public int deleteInfoByIds(String ids);
 
 	List<Info> listProductsIn (List<String> productIds);
+
+	List<Info> decreaseStock (List<ProductStockDto> productStockDtoList);
 }

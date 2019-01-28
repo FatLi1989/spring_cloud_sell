@@ -1,5 +1,6 @@
 package com.novli.order.Client;
 
+import com.novli.order.dto.ProductStockDto;
 import com.novli.order.entity.Info;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
@@ -26,4 +27,7 @@ public interface ProductClient {
 
 	@PostMapping ("/product/listForOrder")
 	List<Info> listProductsInProductId (@RequestBody List<String> productIds);
+
+	@PostMapping ("/product/decreaseStock")
+	List<Info> decreaseStock (@RequestBody List<ProductStockDto> productStockDtoList);
 }
