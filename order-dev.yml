@@ -1,9 +1,16 @@
+env: dev
 spring:
+  application:
+    name: order
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://47.95.0.193:3306/spring_cloud_sell?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
     username: root
     password: root
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8671/eureka/
 mybatis:
     #实体类所做包
     type-aliases-package: com.novli.order.entity
@@ -12,5 +19,4 @@ mybatis:
 logging:
   level:
     com.novli.order.mapper : DEBUG
-server:
-  port: 8672
+
