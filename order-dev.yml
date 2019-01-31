@@ -1,8 +1,3 @@
-env: dev
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8671/eureka/
 mybatis:
     #实体类所做包
     type-aliases-package: com.novli.order.entity
@@ -19,4 +14,5 @@ spring:
     url: jdbc:mysql://47.95.0.193:3306/spring_cloud_sell?setUnicode=true&characterEncoding=utf8
     username: root
     password: root    
-
+server:
+  port: 8673
