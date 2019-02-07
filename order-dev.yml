@@ -1,4 +1,4 @@
-env: test2
+env: test3
 mybatis:
     #实体类所做包
     type-aliases-package: com.novli.order.entity
