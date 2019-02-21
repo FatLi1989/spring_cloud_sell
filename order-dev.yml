@@ -1,0 +1,24 @@
+env: test
+mybatis:
+    #实体类所做包
+    type-aliases-package: com.novli.order.entity
+    #mapper.xml所在位置
+    mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+    com.novli.order.mapper : DEBUG
+spring:
+  application:
+    name: order
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.95.0.193:3306/spring_cloud_sell?setUnicode=true&characterEncoding=utf8
+    username: root
+    password: root  
+  rabbitmq:
+    host: 47.75.217.205
+    port: 5672
+    username: guest
+    password: guest  
+server:
+  port: 8673
