@@ -15,4 +15,6 @@ public class ProductStockDto {
 	private String productId;
 
 	private Integer productStock;
+
+
 }

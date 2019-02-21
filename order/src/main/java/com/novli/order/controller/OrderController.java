@@ -8,8 +8,10 @@ import com.novli.order.form.OrderForm;
 import com.novli.order.service.IMasterService;
 import com.novli.order.util.ResultUtil;
 import com.novli.order.vo.ResultVo;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.CollectionUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -52,6 +54,4 @@ public class OrderController {
 		map.put ("orderId", result.getOrderId ());
 		return ResultUtil.success (map);
 	}
-
-
 }

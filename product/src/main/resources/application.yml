@@ -15,10 +15,15 @@ spring:
     name:  product
   cloud:
       discovery:
-        client:
-          simple:
-            local:
-              uri: 192.0.0.1
+         client:
+            simple:
+              local:
+                uri: 192.0.0.1
+  rabbitmq:
+    host: 47.75.217.205
+    port: 5672
+    username: guest
+    password: guest
 mybatis:
     #实体类所做包
     type-aliases-package: com.novli.product.entity
@@ -28,4 +33,4 @@ logging:
   level:
     com.novli.product.mapper : DEBUG
 server:
-  port: 8673
+  port: 8674

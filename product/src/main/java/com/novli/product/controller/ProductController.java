@@ -55,8 +55,7 @@ public class ProductController {
 	 * 扣库存
 	 */
 	@PostMapping("/decreaseStock")
-	public List<Info> decreaseStock (@RequestBody List<ProductStockDto> productStockDtoList) {
-		List<Info> infoList = iInfoService.decreaseStock(productStockDtoList);
-		return	infoList;
+	public void decreaseStock (@RequestBody List<ProductStockDto> productStockDtoList) {
+		iInfoService.decreaseStock(productStockDtoList);
 	}
 }

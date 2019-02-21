@@ -29,5 +29,5 @@ public interface ProductClient {
 	List<Info> listProductsInProductId (@RequestBody List<String> productIds);
 
 	@PostMapping ("/product/decreaseStock")
-	List<Info> decreaseStock (@RequestBody List<ProductStockDto> productStockDtoList);
+	void decreaseStock (@RequestBody List<ProductStockDto> productStockDtoList);
 }

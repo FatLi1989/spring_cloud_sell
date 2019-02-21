@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,25 +24,24 @@ import java.util.List;
 @Component
 public class IInfoServiceTest extends ProductApplicationTests {
 
-	@Autowired
-	IInfoService iInfoService;
+    @Autowired
+    IInfoService iInfoService;
 
-	@Test
-	public void listProductsIn () {
-		List<Info> infoList = iInfoService.listProductsIn (Arrays.asList ("157875196366160022", "157875227953464068"));
-		log.info ("infoList={}", infoList.toString ());
-		Assert.assertTrue (infoList.size () > 0);
-	}
+    @Test
+    public void listProductsIn() {
+        List<Info> infoList = iInfoService.listProductsIn(Arrays.asList("157875196366160022", "157875227953464068"));
+        log.info("infoList={}", infoList.toString());
+        Assert.assertTrue(infoList.size() > 0);
+    }
 
-	@Test
-	public void decreaseStock () {
-		ProductStockDto productStockDto = new ProductStockDto ();
-		productStockDto.setProductId ("157875227953464068");
-		productStockDto.setProductStock (10);
-		ProductStockDto productStockDto1 = new ProductStockDto ();
-		productStockDto1.setProductId ("164103465734242707");
-		productStockDto1.setProductStock (15);
-		List<Info> infoList = iInfoService.decreaseStock (Arrays.asList (productStockDto, productStockDto1));
-		Assert.assertTrue (infoList.size ()>0);
-	}
+    @Test
+    public void decreaseStock() {
+        ProductStockDto productStockDto = new ProductStockDto();
+        productStockDto.setProductId("157875227953464068");
+        productStockDto.setProductStock(1);
+        ProductStockDto productStockDto1 = new ProductStockDto();
+        productStockDto1.setProductId("164103465734242707");
+        productStockDto1.setProductStock(1);
+        iInfoService.decreaseStock(Arrays.asList(productStockDto, productStockDto1));
+    }
 }

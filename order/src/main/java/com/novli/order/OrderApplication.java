@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableDiscoveryClient
 @MapperScan("com.novli.order.mapper")
-@ComponentScan(basePackages = {"com.novli.order.*"})@ComponentScan()
+@ComponentScan(basePackages = {"com.novli.order.*"})
 public class OrderApplication {
 
     public static void main(String[] args) {

@@ -55,5 +55,5 @@ public interface IInfoService
 
 	List<Info> listProductsIn (List<String> productIds);
 
-	List<Info> decreaseStock (List<ProductStockDto> productStockDtoList);
+	void decreaseStock (List<ProductStockDto> productStockDtoList);
 }

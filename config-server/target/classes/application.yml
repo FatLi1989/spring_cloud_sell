@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/FatLi1989/spring_cloud_sell
+          username: 514340686@qq.com
+          password: lyp19891117
+  rabbitmq:
+    host: 47.75.217.205
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8671/eureka/
+  instance:
+    prefer-ip-address: true
+server:
+  port: 8672
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
