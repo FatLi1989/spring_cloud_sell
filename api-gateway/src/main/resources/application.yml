@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: api-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8671/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+zuul:
+  routes:
+  # serviceId : 路由地址
+    product: /myP/**
+  #排除路由
+#  ignored-patterns:
+#    - /**/product/list
+  #zuul 头信息设置为空可以传递cookie 敏感头过滤
+  sensitiveHeaders:
+
