@@ -12,7 +12,7 @@ spring:
     name: order
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.95.0.193:3306/spring_cloud_sell?setUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://47.75.217.205:3306/spring_cloud_sell?setUnicode=true&characterEncoding=utf8
     username: root
     password: root  
   rabbitmq:
